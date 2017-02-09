@@ -83,18 +83,17 @@ legendIcon pos legend =
 legendIcons : List (Svg Msg)
 legendIcons =
     List.concat <|
-        flip
-            List.indexedMap
-            weapons
+        List.indexedMap
             (\y ( w1, _ ) ->
-                flip List.indexedMap
-                    weapons
+                List.indexedMap
                     (\x ( w2, _ ) ->
                         getLegendWithWeapons w1 w2
                             |> Maybe.map .legend
                             |> legendIcon ( x + 1, y + 1 )
                     )
+                    weapons
             )
+            weapons
 
 
 view : Model -> Svg Msg

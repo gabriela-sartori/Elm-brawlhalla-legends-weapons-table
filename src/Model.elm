@@ -60,6 +60,7 @@ type Legend
     | Ragnir
     | Cross
     | Mirage
+    | Grim
 
 
 legends : List LegendInfo
@@ -93,6 +94,7 @@ legends =
     , LegendInfo Ragnir 0 0 0 0 Katars Axe
     , LegendInfo Cross 0 0 0 0 Blasters Gauntlets
     , LegendInfo Mirage 0 0 0 0 Scythe Spear
+    , LegendInfo Grim 0 0 0 0 Scythe Blasters
     ]
 
 
@@ -235,6 +237,9 @@ legendImg legend =
 
         Mirage ->
             "http://wiki.brawlhalla.com/images/thumb/a/a0/MirageAvatar.png/200px-MirageAvatar.png"
+
+        Grim ->
+            "http://4.bp.blogspot.com/-6jzIz4THuZc/U8R4BPR0IBI/AAAAAAAAASg/U0k6fyz9DUI/s1600/puro_osso002.gif"
 
 
 getLegendsThatUse : Weapon -> Int

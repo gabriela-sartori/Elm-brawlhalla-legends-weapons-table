@@ -8150,6 +8150,7 @@ var _user$project$Model$Blasters = {ctor: 'Blasters'};
 var _user$project$Model$Sword = {ctor: 'Sword'};
 var _user$project$Model$Rocket = {ctor: 'Rocket'};
 var _user$project$Model$Hammer = {ctor: 'Hammer'};
+var _user$project$Model$Grim = {ctor: 'Grim'};
 var _user$project$Model$Mirage = {ctor: 'Mirage'};
 var _user$project$Model$Cross = {ctor: 'Cross'};
 var _user$project$Model$Ragnir = {ctor: 'Ragnir'};
@@ -8266,7 +8267,11 @@ var _user$project$Model$legends = {
 																												_1: {
 																													ctor: '::',
 																													_0: A7(_user$project$Model$LegendInfo, _user$project$Model$Mirage, 0, 0, 0, 0, _user$project$Model$Scythe, _user$project$Model$Spear),
-																													_1: {ctor: '[]'}
+																													_1: {
+																														ctor: '::',
+																														_0: A7(_user$project$Model$LegendInfo, _user$project$Model$Grim, 0, 0, 0, 0, _user$project$Model$Scythe, _user$project$Model$Blasters),
+																														_1: {ctor: '[]'}
+																													}
 																												}
 																											}
 																										}
@@ -8428,8 +8433,10 @@ var _user$project$Model$legendImg = function (legend) {
 			return 'http://wiki.brawlhalla.com/images/f/f5/RagnirAvatar2.png';
 		case 'Cross':
 			return 'http://wiki.brawlhalla.com/images/thumb/2/22/CrossAvatar2.png/200px-CrossAvatar2.png';
-		default:
+		case 'Mirage':
 			return 'http://wiki.brawlhalla.com/images/thumb/a/a0/MirageAvatar.png/200px-MirageAvatar.png';
+		default:
+			return 'http://4.bp.blogspot.com/-6jzIz4THuZc/U8R4BPR0IBI/AAAAAAAAASg/U0k6fyz9DUI/s1600/puro_osso002.gif';
 	}
 };
 var _user$project$Update$update = F2(
@@ -8483,17 +8490,13 @@ var _user$project$View$legendIcon = F2(
 			_user$project$Model$legendImg(legend));
 	});
 var _user$project$View$legendIcons = _elm_lang$core$List$concat(
-	A3(
-		_elm_lang$core$Basics$flip,
+	A2(
 		_elm_lang$core$List$indexedMap,
-		_user$project$Model$weapons,
 		F2(
 			function (y, _p4) {
 				var _p5 = _p4;
-				return A3(
-					_elm_lang$core$Basics$flip,
+				return A2(
 					_elm_lang$core$List$indexedMap,
-					_user$project$Model$weapons,
 					F2(
 						function (x, _p6) {
 							var _p7 = _p6;
@@ -8506,8 +8509,10 @@ var _user$project$View$legendIcons = _elm_lang$core$List$concat(
 										return _.legend;
 									},
 									A2(_user$project$Model$getLegendWithWeapons, _p5._0, _p7._0)));
-						}));
-			})));
+						}),
+					_user$project$Model$weapons);
+			}),
+		_user$project$Model$weapons));
 var _user$project$View$iconX = function (pos) {
 	var _p8 = _user$project$View$posToXy(pos);
 	var x_ = _p8._0;
