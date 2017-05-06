@@ -60,7 +60,9 @@ type Legend
     | Ragnir
     | Cross
     | Mirage
-    | Grim
+    | Nix
+    | Mordex
+    | Yumiko
 
 
 legends : List LegendInfo
@@ -94,7 +96,9 @@ legends =
     , LegendInfo Ragnir 0 0 0 0 Katars Axe
     , LegendInfo Cross 0 0 0 0 Blasters Gauntlets
     , LegendInfo Mirage 0 0 0 0 Scythe Spear
-    , LegendInfo Grim 0 0 0 0 Scythe Blasters
+    , LegendInfo Nix 0 0 0 0 Scythe Blasters
+    , LegendInfo Mordex 0 0 0 0 Scythe Gauntlets
+    , LegendInfo Yumiko 0 0 0 0 Bow Hammer
     ]
 
 
@@ -238,8 +242,14 @@ legendImg legend =
         Mirage ->
             "http://wiki.brawlhalla.com/images/thumb/a/a0/MirageAvatar.png/200px-MirageAvatar.png"
 
-        Grim ->
-            "http://4.bp.blogspot.com/-6jzIz4THuZc/U8R4BPR0IBI/AAAAAAAAASg/U0k6fyz9DUI/s1600/puro_osso002.gif"
+        Nix ->
+            "http://wiki.brawlhalla.com/images/b/b9/NixAvatar5.png"
+
+        Mordex ->
+            "http://wiki.brawlhalla.com/images/thumb/a/a5/MordexAvatar1.png/200px-MordexAvatar1.png"
+
+        Yumiko ->
+            "http://3.bp.blogspot.com/-PpjfsStySz0/UF91FE7rxfI/AAAAAAAACl8/092MmUHSFQ0/s1600/no_image.jpg"
 
 
 getLegendsThatUse : Weapon -> Int

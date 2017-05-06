@@ -8150,7 +8150,9 @@ var _user$project$Model$Blasters = {ctor: 'Blasters'};
 var _user$project$Model$Sword = {ctor: 'Sword'};
 var _user$project$Model$Rocket = {ctor: 'Rocket'};
 var _user$project$Model$Hammer = {ctor: 'Hammer'};
-var _user$project$Model$Grim = {ctor: 'Grim'};
+var _user$project$Model$Yumiko = {ctor: 'Yumiko'};
+var _user$project$Model$Mordex = {ctor: 'Mordex'};
+var _user$project$Model$Nix = {ctor: 'Nix'};
 var _user$project$Model$Mirage = {ctor: 'Mirage'};
 var _user$project$Model$Cross = {ctor: 'Cross'};
 var _user$project$Model$Ragnir = {ctor: 'Ragnir'};
@@ -8269,8 +8271,16 @@ var _user$project$Model$legends = {
 																													_0: A7(_user$project$Model$LegendInfo, _user$project$Model$Mirage, 0, 0, 0, 0, _user$project$Model$Scythe, _user$project$Model$Spear),
 																													_1: {
 																														ctor: '::',
-																														_0: A7(_user$project$Model$LegendInfo, _user$project$Model$Grim, 0, 0, 0, 0, _user$project$Model$Scythe, _user$project$Model$Blasters),
-																														_1: {ctor: '[]'}
+																														_0: A7(_user$project$Model$LegendInfo, _user$project$Model$Nix, 0, 0, 0, 0, _user$project$Model$Scythe, _user$project$Model$Blasters),
+																														_1: {
+																															ctor: '::',
+																															_0: A7(_user$project$Model$LegendInfo, _user$project$Model$Mordex, 0, 0, 0, 0, _user$project$Model$Scythe, _user$project$Model$Gauntlets),
+																															_1: {
+																																ctor: '::',
+																																_0: A7(_user$project$Model$LegendInfo, _user$project$Model$Yumiko, 0, 0, 0, 0, _user$project$Model$Bow, _user$project$Model$Hammer),
+																																_1: {ctor: '[]'}
+																															}
+																														}
 																													}
 																												}
 																											}
@@ -8435,8 +8445,12 @@ var _user$project$Model$legendImg = function (legend) {
 			return 'http://wiki.brawlhalla.com/images/thumb/2/22/CrossAvatar2.png/200px-CrossAvatar2.png';
 		case 'Mirage':
 			return 'http://wiki.brawlhalla.com/images/thumb/a/a0/MirageAvatar.png/200px-MirageAvatar.png';
+		case 'Nix':
+			return 'http://wiki.brawlhalla.com/images/b/b9/NixAvatar5.png';
+		case 'Mordex':
+			return 'http://wiki.brawlhalla.com/images/thumb/a/a5/MordexAvatar1.png/200px-MordexAvatar1.png';
 		default:
-			return 'http://4.bp.blogspot.com/-6jzIz4THuZc/U8R4BPR0IBI/AAAAAAAAASg/U0k6fyz9DUI/s1600/puro_osso002.gif';
+			return 'http://3.bp.blogspot.com/-PpjfsStySz0/UF91FE7rxfI/AAAAAAAACl8/092MmUHSFQ0/s1600/no_image.jpg';
 	}
 };
 var _user$project$Update$update = F2(
