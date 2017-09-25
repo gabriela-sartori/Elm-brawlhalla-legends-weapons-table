@@ -12,6 +12,7 @@ type Weapon
     | Bow
     | Gauntlets
     | Scythe
+    | Cannon
 
 
 type alias Model =
@@ -63,6 +64,8 @@ type Legend
     | Nix
     | Mordex
     | Yumiko
+    | Artemis
+    | Caspian
 
 
 legends : List LegendInfo
@@ -99,6 +102,8 @@ legends =
     , LegendInfo Nix 0 0 0 0 Scythe Blasters
     , LegendInfo Mordex 0 0 0 0 Scythe Gauntlets
     , LegendInfo Yumiko 0 0 0 0 Bow Hammer
+    , LegendInfo Artemis 0 0 0 0 Rocket Scythe
+    , LegendInfo Caspian 0 0 0 0 Gauntlets Katars
     ]
 
 
@@ -106,7 +111,7 @@ legends =
 -}
 weapons : List ( Weapon, Int )
 weapons =
-    [ Hammer, Rocket, Sword, Blasters, Spear, Katars, Axe, Bow, Gauntlets, Scythe ]
+    [ Hammer, Rocket, Sword, Blasters, Spear, Katars, Axe, Bow, Gauntlets, Scythe, Cannon ]
         |> List.map (\w -> ( w, getLegendsThatUse w ))
 
 
@@ -147,6 +152,9 @@ weaponImg weapon =
 
         Scythe ->
             "http://wiki.brawlhalla.com/images/6/64/ScytheIcon.png"
+
+        Cannon ->
+            "https://i.ytimg.com/vi/s5_MOeHsMQM/maxresdefault.jpg"
 
 
 legendImg : Maybe Legend -> String
@@ -249,7 +257,13 @@ legendImg legend =
             "http://wiki.brawlhalla.com/images/thumb/a/a5/MordexAvatar1.png/200px-MordexAvatar1.png"
 
         Yumiko ->
-            "http://3.bp.blogspot.com/-PpjfsStySz0/UF91FE7rxfI/AAAAAAAACl8/092MmUHSFQ0/s1600/no_image.jpg"
+            "http://wiki.brawlhalla.com/images/thumb/1/15/YumikoAvatar.png/200px-YumikoAvatar.png"
+
+        Artemis ->
+            "http://wiki.brawlhalla.com/images/thumb/7/72/ArtemisAvatar2.png/200px-ArtemisAvatar2.png"
+
+        Caspian ->
+            "http://wiki.brawlhalla.com/images/thumb/9/98/CaspianAvatar.png/200px-CaspianAvatar.png"
 
 
 getLegendsThatUse : Weapon -> Int

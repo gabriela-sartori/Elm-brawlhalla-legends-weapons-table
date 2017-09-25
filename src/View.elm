@@ -1,6 +1,5 @@
 module View exposing (..)
 
-import Msg exposing (..)
 import Model exposing (..)
 import Svg exposing (..)
 import Svg.Attributes exposing (..)
@@ -15,7 +14,7 @@ posToXy ( x_, y_ ) =
     ( x_ * iconWidth, y_ * iconHeight )
 
 
-iconX : ( Int, Int ) -> Svg Msg
+iconX : ( Int, Int ) -> Svg a
 iconX pos =
     let
         ( x_, y_ ) =
@@ -46,7 +45,7 @@ iconX pos =
             ]
 
 
-icon : ( Int, Int ) -> String -> Svg Msg
+icon : ( Int, Int ) -> String -> Svg a
 icon pos urlPath =
     let
         ( x_, y_ ) =
@@ -62,7 +61,7 @@ icon pos urlPath =
             []
 
 
-weaponIcon : ( Int, Int ) -> ( Weapon, Int ) -> Svg Msg
+weaponIcon : ( Int, Int ) -> ( Weapon, Int ) -> Svg a
 weaponIcon (( x_, y_ ) as pos) ( weapon, count ) =
     svg []
         [ icon pos (weaponImg weapon)
@@ -75,12 +74,12 @@ weaponIcon (( x_, y_ ) as pos) ( weapon, count ) =
         ]
 
 
-legendIcon : ( Int, Int ) -> Maybe Legend -> Svg Msg
+legendIcon : ( Int, Int ) -> Maybe Legend -> Svg a
 legendIcon pos legend =
     icon pos (legendImg legend)
 
 
-legendIcons : List (Svg Msg)
+legendIcons : List (Svg a)
 legendIcons =
     List.concat <|
         List.indexedMap
@@ -96,21 +95,25 @@ legendIcons =
             weapons
 
 
-view : Model -> Svg Msg
+view : Model -> Svg a
 view model =
-    svg [ width "724", height "724" ] <|
-        [ rect
-            [ width "724"
-            , height "724"
-            , fill "blue"
-            , stroke "black"
-            , strokeWidth "2"
-            , strokeOpacity "0.5"
-            , fillOpacity "0.05"
+    let
+        ( width_, height_ ) =
+            ( (1 + List.length weapons) * 66 - 2, (1 + List.length weapons) * 66 - 2 )
+    in
+        svg [ width (toString width_), height (toString height_) ] <|
+            [ rect
+                [ width (toString width_)
+                , height (toString height_)
+                , fill "blue"
+                , stroke "black"
+                , strokeWidth "2"
+                , strokeOpacity "0.5"
+                , fillOpacity "0.05"
+                ]
+                []
             ]
-            []
-        ]
-            ++ List.indexedMap (\i _ -> iconX ( i + 1, i + 1 )) weapons
-            ++ List.indexedMap (\i w -> weaponIcon ( i + 1, 0 ) w) weapons
-            ++ List.indexedMap (\i w -> weaponIcon ( 0, i + 1 ) w) weapons
-            ++ legendIcons
+                ++ List.indexedMap (\i _ -> iconX ( i + 1, i + 1 )) weapons
+                ++ List.indexedMap (\i w -> weaponIcon ( i + 1, 0 ) w) weapons
+                ++ List.indexedMap (\i w -> weaponIcon ( 0, i + 1 ) w) weapons
+                ++ legendIcons

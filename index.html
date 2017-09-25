@@ -8107,7 +8107,6 @@ var _elm_lang$svg$Svg_Attributes$additive = _elm_lang$virtual_dom$VirtualDom$att
 var _elm_lang$svg$Svg_Attributes$accumulate = _elm_lang$virtual_dom$VirtualDom$attribute('accumulate');
 var _elm_lang$svg$Svg_Attributes$accelerate = _elm_lang$virtual_dom$VirtualDom$attribute('accelerate');
 var _elm_lang$svg$Svg_Attributes$accentHeight = _elm_lang$virtual_dom$VirtualDom$attribute('accent-height');
-var _user$project$Msg$Nop = {ctor: 'Nop'};
 var _user$project$Model$weaponImg = function (weapon) {
 	var _p0 = weapon;
 	switch (_p0.ctor) {
@@ -8129,8 +8128,10 @@ var _user$project$Model$weaponImg = function (weapon) {
 			return 'http://wiki.brawlhalla.com/images/2/23/BowIcon.png';
 		case 'Gauntlets':
 			return 'http://wiki.brawlhalla.com/images/d/d8/GauntletsIcon.png';
-		default:
+		case 'Scythe':
 			return 'http://wiki.brawlhalla.com/images/6/64/ScytheIcon.png';
+		default:
+			return 'https://i.ytimg.com/vi/s5_MOeHsMQM/maxresdefault.jpg';
 	}
 };
 var _user$project$Model$Model = function (a) {
@@ -8140,6 +8141,7 @@ var _user$project$Model$LegendInfo = F7(
 	function (a, b, c, d, e, f, g) {
 		return {legend: a, str: b, dex: c, def: d, spd: e, weapon: f, weapon2: g};
 	});
+var _user$project$Model$Cannon = {ctor: 'Cannon'};
 var _user$project$Model$Scythe = {ctor: 'Scythe'};
 var _user$project$Model$Gauntlets = {ctor: 'Gauntlets'};
 var _user$project$Model$Bow = {ctor: 'Bow'};
@@ -8150,6 +8152,8 @@ var _user$project$Model$Blasters = {ctor: 'Blasters'};
 var _user$project$Model$Sword = {ctor: 'Sword'};
 var _user$project$Model$Rocket = {ctor: 'Rocket'};
 var _user$project$Model$Hammer = {ctor: 'Hammer'};
+var _user$project$Model$Caspian = {ctor: 'Caspian'};
+var _user$project$Model$Artemis = {ctor: 'Artemis'};
 var _user$project$Model$Yumiko = {ctor: 'Yumiko'};
 var _user$project$Model$Mordex = {ctor: 'Mordex'};
 var _user$project$Model$Nix = {ctor: 'Nix'};
@@ -8278,7 +8282,15 @@ var _user$project$Model$legends = {
 																															_1: {
 																																ctor: '::',
 																																_0: A7(_user$project$Model$LegendInfo, _user$project$Model$Yumiko, 0, 0, 0, 0, _user$project$Model$Bow, _user$project$Model$Hammer),
-																																_1: {ctor: '[]'}
+																																_1: {
+																																	ctor: '::',
+																																	_0: A7(_user$project$Model$LegendInfo, _user$project$Model$Artemis, 0, 0, 0, 0, _user$project$Model$Rocket, _user$project$Model$Scythe),
+																																	_1: {
+																																		ctor: '::',
+																																		_0: A7(_user$project$Model$LegendInfo, _user$project$Model$Caspian, 0, 0, 0, 0, _user$project$Model$Gauntlets, _user$project$Model$Katars),
+																																		_1: {ctor: '[]'}
+																																	}
+																																}
 																															}
 																														}
 																													}
@@ -8360,7 +8372,11 @@ var _user$project$Model$weapons = A2(
 										_1: {
 											ctor: '::',
 											_0: _user$project$Model$Scythe,
-											_1: {ctor: '[]'}
+											_1: {
+												ctor: '::',
+												_0: _user$project$Model$Cannon,
+												_1: {ctor: '[]'}
+											}
 										}
 									}
 								}
@@ -8449,14 +8465,14 @@ var _user$project$Model$legendImg = function (legend) {
 			return 'http://wiki.brawlhalla.com/images/b/b9/NixAvatar5.png';
 		case 'Mordex':
 			return 'http://wiki.brawlhalla.com/images/thumb/a/a5/MordexAvatar1.png/200px-MordexAvatar1.png';
+		case 'Yumiko':
+			return 'http://wiki.brawlhalla.com/images/thumb/1/15/YumikoAvatar.png/200px-YumikoAvatar.png';
+		case 'Artemis':
+			return 'http://wiki.brawlhalla.com/images/thumb/7/72/ArtemisAvatar2.png/200px-ArtemisAvatar2.png';
 		default:
-			return 'http://3.bp.blogspot.com/-PpjfsStySz0/UF91FE7rxfI/AAAAAAAACl8/092MmUHSFQ0/s1600/no_image.jpg';
+			return 'http://wiki.brawlhalla.com/images/thumb/9/98/CaspianAvatar.png/200px-CaspianAvatar.png';
 	}
 };
-var _user$project$Update$update = F2(
-	function (msg, model) {
-		return model;
-	});
 var _user$project$View$_p0 = {ctor: '_Tuple2', _0: 66, _1: 66};
 var _user$project$View$iconWidth = _user$project$View$_p0._0;
 var _user$project$View$iconHeight = _user$project$View$_p0._1;
@@ -8659,14 +8675,23 @@ var _user$project$View$weaponIcon = F2(
 			});
 	});
 var _user$project$View$view = function (model) {
+	var _p13 = {
+		ctor: '_Tuple2',
+		_0: ((1 + _elm_lang$core$List$length(_user$project$Model$weapons)) * 66) - 2,
+		_1: ((1 + _elm_lang$core$List$length(_user$project$Model$weapons)) * 66) - 2
+	};
+	var width_ = _p13._0;
+	var height_ = _p13._1;
 	return A2(
 		_elm_lang$svg$Svg$svg,
 		{
 			ctor: '::',
-			_0: _elm_lang$svg$Svg_Attributes$width('724'),
+			_0: _elm_lang$svg$Svg_Attributes$width(
+				_elm_lang$core$Basics$toString(width_)),
 			_1: {
 				ctor: '::',
-				_0: _elm_lang$svg$Svg_Attributes$height('724'),
+				_0: _elm_lang$svg$Svg_Attributes$height(
+					_elm_lang$core$Basics$toString(height_)),
 				_1: {ctor: '[]'}
 			}
 		},
@@ -8678,10 +8703,12 @@ var _user$project$View$view = function (model) {
 					_elm_lang$svg$Svg$rect,
 					{
 						ctor: '::',
-						_0: _elm_lang$svg$Svg_Attributes$width('724'),
+						_0: _elm_lang$svg$Svg_Attributes$width(
+							_elm_lang$core$Basics$toString(width_)),
 						_1: {
 							ctor: '::',
-							_0: _elm_lang$svg$Svg_Attributes$height('724'),
+							_0: _elm_lang$svg$Svg_Attributes$height(
+								_elm_lang$core$Basics$toString(height_)),
 							_1: {
 								ctor: '::',
 								_0: _elm_lang$svg$Svg_Attributes$fill('blue'),
@@ -8713,7 +8740,7 @@ var _user$project$View$view = function (model) {
 				A2(
 					_elm_lang$core$List$indexedMap,
 					F2(
-						function (i, _p13) {
+						function (i, _p14) {
 							return _user$project$View$iconX(
 								{ctor: '_Tuple2', _0: i + 1, _1: i + 1});
 						}),
@@ -8745,7 +8772,7 @@ var _user$project$View$view = function (model) {
 						_user$project$View$legendIcons)))));
 };
 var _user$project$Main$main = _elm_lang$html$Html$beginnerProgram(
-	{model: _user$project$Model$model, view: _user$project$View$view, update: _user$project$Update$update})();
+	{model: _user$project$Model$model, view: _user$project$View$view, update: _elm_lang$core$Basics$always})();
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};
 if (typeof _user$project$Main$main !== 'undefined') {
